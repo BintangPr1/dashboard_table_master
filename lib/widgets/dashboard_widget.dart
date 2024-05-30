@@ -1,3 +1,5 @@
+import 'package:dashboard_table_master/widgets/dashboard_widget_button.dart';
+import 'package:dashboard_table_master/widgets/dashboard_widget_search.dart';
 import 'package:flutter/material.dart';
 
 class DashboardWidget extends StatelessWidget {
@@ -10,19 +12,15 @@ class DashboardWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 3,
-            child: Container(
-              color: Colors.red,
-            ),
+            flex: 2,
+            child: DashboardWidgetButton(),
           ),
           SizedBox(
             height: 10,
           ),
           Expanded(
-            flex: 3,
-            child: Container(
-              color: Colors.green,
-            ),
+            flex: 2,
+            child: DashboardWidgetSearch(),
           ),
           SizedBox(
             height: 10,
