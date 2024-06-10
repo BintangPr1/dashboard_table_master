@@ -27,6 +27,7 @@ class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
           password: 'September123'),
       settings: const ConnectionSettings(sslMode: SslMode.disable),
     );
+
     final temp = await conn.execute('SELECT * FROM master_staking_period');
 
     setState(() {
@@ -53,7 +54,11 @@ class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
             ],
             source: _DataSource(context, result),
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('asdasd'))
+          ElevatedButton(
+              onPressed: () {
+                print(result[0][2]);
+              },
+              child: const Text('asdasd'))
         ],
       ),
     );

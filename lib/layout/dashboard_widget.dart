@@ -1,4 +1,4 @@
-import 'package:dashboard_table_master/widgets/dashboard_widget_button.dart';
+import 'package:dashboard_table_master/dashboard_crud_button/dashboard_widget_button.dart';
 import 'package:dashboard_table_master/widgets/dashboard_widget_search.dart';
 import 'package:dashboard_table_master/widgets/dashboard_widget_table.dart';
 import 'package:flutter/material.dart';
