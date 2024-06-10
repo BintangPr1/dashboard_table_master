@@ -1,3 +1,4 @@
+import 'package:dashboard_table_master/widgets/textfield_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardWidgetButton extends StatelessWidget {
@@ -25,7 +26,78 @@ class DashboardWidgetButton extends StatelessWidget {
                   ),
                   width: 100,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              backgroundColor: Colors.white,
+                              title: Text("Add"),
+                              actions: [
+                                TextField1(label: 'Country Code'),
+                                TextField1(label: 'Period'),
+                                TextField1(label: 'Min Weight'),
+                                TextField1(label: 'Max Weight'),
+                                TextField1(label: 'Penalty Percentage'),
+                                TextField1(label: 'Reward Percentage'),
+                                Row(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      width: 100,
+                                      child: TextButton(
+                                        onPressed: () {},
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              WidgetStateProperty.all<Color>(
+                                                  Colors.blue.shade100),
+                                          shape: WidgetStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          'Cancel',
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.black),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      width: 100,
+                                      child: TextButton(
+                                        onPressed: () {},
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              WidgetStateProperty.all<Color>(
+                                                  Colors.blue.shade100),
+                                          shape: WidgetStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          'Add',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            );
+                          });
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           WidgetStateProperty.all<Color>(Colors.green.shade100),

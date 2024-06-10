@@ -20,21 +20,15 @@ class DashboardWidget extends StatelessWidget {
             height: 10,
           ),
           const Expanded(
-            flex: 2,
+            flex: 3,
             child: DashboardWidgetSearch(),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Expanded(flex: 10, child: DashboardWidgetTable()),
-          const SizedBox(
-            height: 10,
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.yellow,
-            ),
+          const Expanded(
+            flex: 10,
+            child: DashboardWidgetTable(),
           ),
         ],
       ),

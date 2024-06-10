@@ -22,7 +22,7 @@ class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
       Endpoint(
           host: 'localhost',
           port: 5432,
-          database: 'treasury',
+          database: 'treasury2',
           username: 'postgres',
           password: 'September123'),
       settings: const ConnectionSettings(sslMode: SslMode.disable),
@@ -41,7 +41,7 @@ class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
         padding: const EdgeInsets.all(16),
         children: [
           PaginatedDataTable(
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             columns: const [
               DataColumn(label: Text('uid')),
               DataColumn(label: Text('Country Code')),
@@ -51,13 +51,9 @@ class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
               DataColumn(label: Text('Penalty Percentage')),
               DataColumn(label: Text('Reward Percentage')),
             ],
-            source: _DataSource(context),
+            source: _DataSource(context, result),
           ),
-          ElevatedButton(
-              onPressed: () {
-                print(result);
-              },
-              child: const Text('asdasd'))
+          ElevatedButton(onPressed: () {}, child: const Text('asdasd'))
         ],
       ),
     );
@@ -68,10 +64,10 @@ class _Row {
   final int uid;
   final String countryCode;
   final String period;
-  final double minWeight;
-  final double maxWeight;
-  final double penaltyPercentage;
-  final double rewardPercentage;
+  final String minWeight;
+  final String maxWeight;
+  final String penaltyPercentage;
+  final String rewardPercentage;
 
   _Row(
     this.uid,
@@ -87,11 +83,18 @@ class _Row {
 }
 
 class _DataSource extends DataTableSource {
-  _DataSource(this.context) {
-    _rows = <_Row>[
-      _Row(1, '+74', '90d', 9.5, 90, 2.3, 5),
-      _Row(2, '+62', '14d', 10.5, 100, 2.5, 4),
-    ];
+  _DataSource(this.context, List<List<dynamic>> result) {
+    _rows = result.map((row) {
+      return _Row(
+        row[0],
+        row[1],
+        row[2],
+        row[3],
+        row[4],
+        row[5],
+        row[6],
+      );
+    }).toList();
   }
 
   final BuildContext context;
@@ -123,10 +126,10 @@ class _DataSource extends DataTableSource {
         DataCell(Text(row.uid.toString())),
         DataCell(Text(row.countryCode)),
         DataCell(Text(row.period)),
-        DataCell(Text(row.minWeight.toString())),
-        DataCell(Text(row.maxWeight.toString())),
-        DataCell(Text(row.penaltyPercentage.toString())),
-        DataCell(Text(row.rewardPercentage.toString())),
+        DataCell(Text(row.minWeight)),
+        DataCell(Text(row.maxWeight)),
+        DataCell(Text(row.penaltyPercentage)),
+        DataCell(Text(row.rewardPercentage)),
       ],
     );
   }
