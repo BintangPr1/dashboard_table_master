@@ -1,72 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:postgres/postgres.dart';
 import 'package:dashboard_table_master/dashboard_table/table_logic.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:fstudio/fstudio.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-// class DashboardWidgetTable extends StatefulWidget {
-//   const DashboardWidgetTable({super.key});
-
-//   @override
-//   State<DashboardWidgetTable> createState() => _DashboardWidgetTableState();
-// }
-
-// class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
-//   late List<List<dynamic>> result = [];
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     fetchData();
-//   }
-
-//   Future<void> fetchData() async {
-//     final conn = await Connection.open(
-//       Endpoint(
-//           host: 'localhost',
-//           port: 5432,
-//           database: 'treasury2',
-//           username: 'postgres',
-//           password: 'September123'),
-//       settings: const ConnectionSettings(sslMode: SslMode.disable),
-//     );
-
-//     final temp = await conn.execute('SELECT * FROM master_staking_period');
-
-//     setState(() {
-//       result = temp;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: ListView(
-//         padding: const EdgeInsets.all(16),
-//         children: [
-//           PaginatedDataTable(
-//             rowsPerPage: 5,
-//             columns: const [
-//               DataColumn(label: Text('uid')),
-//               DataColumn(label: Text('Country Code')),
-//               DataColumn(label: Text('Period')),
-//               DataColumn(label: Text('Min Weight')),
-//               DataColumn(label: Text('Max Weight')),
-//               DataColumn(label: Text('Penalty Percentage')),
-//               DataColumn(label: Text('Reward Percentage')),
-//             ],
-//             source: _DataSource(context, result),
-//           ),
-//           ElevatedButton(
-//               onPressed: () {
-//                 print(result[0][2]);
-//               },
-//               child: const Text('asdasd'))
-//         ],
-//       ),
-//     );
-//   }
-// }
+final supabase = Supabase.instance.client;
 
 class TableWidget extends FPage<TableLogic> {
   late List<List<dynamic>> result = [];
@@ -76,20 +14,11 @@ class TableWidget extends FPage<TableLogic> {
     fetchData();
   }
 
-  Future<void> fetchData() async {
-    final conn = await Connection.open(
-      Endpoint(
-          host: 'localhost',
-          port: 5432,
-          database: 'treasury2',
-          username: 'postgres',
-          password: 'September123'),
-      settings: const ConnectionSettings(sslMode: SslMode.disable),
-    );
+  var data;
 
-    final temp = await conn.execute('SELECT * FROM master_staking_period');
-
-    result = temp;
+  void fetchData() async {
+    data = await supabase.from('master_staking_period').select('*');
+    print(data[0]['uid']);
   }
 
   @override
@@ -111,11 +40,7 @@ class TableWidget extends FPage<TableLogic> {
             ],
             source: _DataSource(context, result),
           ),
-          ElevatedButton(
-              onPressed: () {
-                print(result[0][2]);
-              },
-              child: const Text('asdasd'))
+          ElevatedButton(onPressed: () {}, child: const Text('asdasd'))
         ],
       ),
     );
@@ -124,12 +49,12 @@ class TableWidget extends FPage<TableLogic> {
 
 class _Row {
   final int uid;
-  final String countryCode;
+  final int countryCode;
   final String period;
-  final String minWeight;
-  final String maxWeight;
-  final String penaltyPercentage;
-  final String rewardPercentage;
+  final int minWeight;
+  final int maxWeight;
+  final double penaltyPercentage;
+  final double rewardPercentage;
 
   _Row(
     this.uid,
@@ -145,8 +70,8 @@ class _Row {
 }
 
 class _DataSource extends DataTableSource {
-  _DataSource(this.context, List<List<dynamic>> result) {
-    _rows = result.map((row) {
+  _DataSource(this.context, List<List<dynamic>> data) {
+    _rows = data.map((row) {
       return _Row(
         row[0],
         row[1],
@@ -186,12 +111,12 @@ class _DataSource extends DataTableSource {
       },
       cells: [
         DataCell(Text(row.uid.toString())),
-        DataCell(Text(row.countryCode)),
+        DataCell(Text(row.countryCode.toString())),
         DataCell(Text(row.period)),
-        DataCell(Text(row.minWeight)),
-        DataCell(Text(row.maxWeight)),
-        DataCell(Text(row.penaltyPercentage)),
-        DataCell(Text(row.rewardPercentage)),
+        DataCell(Text(row.minWeight.toString())),
+        DataCell(Text(row.maxWeight.toString())),
+        DataCell(Text(row.penaltyPercentage.toString())),
+        DataCell(Text(row.rewardPercentage.toString())),
       ],
     );
   }

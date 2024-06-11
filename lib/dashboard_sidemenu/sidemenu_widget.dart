@@ -38,7 +38,7 @@ class SidemenuWidget extends FPage<SidemenuLogic> {
               Expanded(
                 child: ListView.builder(
                   itemCount: data.menu.length,
-                  itemBuilder: (context, index) => BuildMenuEntry(data, index),
+                  itemBuilder: (context, index) => buildMenuEntry(data, index),
                 ),
               ),
             ],
@@ -48,28 +48,32 @@ class SidemenuWidget extends FPage<SidemenuLogic> {
     );
   }
 
-  Widget BuildMenuEntry(SideMenuData data, int index) {
+  Widget buildMenuEntry(SideMenuData data, int index) {
     final isSelected = selectedIndex == index;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: InkWell(
-        // onTap: () => setState(() {
-        //   selectedIndex = index;
-        // }),
-        child: Container(
-          padding: EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: isSelected ? Colors.amber[200] : Colors.white,
-            border: Border.all(color: Colors.black),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            data.menu[index].title,
+    return logic.selectedIndexPipe.onUpdate((value) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+        child: InkWell(
+          onTap: logic.onTapSidemenu,
+          child: Container(
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: value ? Colors.amber[200] : Colors.white,
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              data.menu[index].title,
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
+
+// onTap: () => setState(() {
+        //   selectedIndex = index;
+        // }),
