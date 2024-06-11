@@ -1,11 +1,16 @@
-import 'package:dashboard_table_master/widgets/textfield_widget.dart';
+import 'package:dashboard_table_master/dashboard_crud/button_logic.dart';
 import 'package:flutter/material.dart';
+import 'package:fstudio/fstudio.dart';
+import 'package:dashboard_table_master/utils/textfield_widget.dart';
 
-class DashboardWidgetButton extends StatelessWidget {
-  const DashboardWidgetButton({super.key});
+class ButtonWidget extends FPage<ButtonLogic> {
+  @override
+  void initialize() {
+    setLogic(ButtonLogic());
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLayout(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

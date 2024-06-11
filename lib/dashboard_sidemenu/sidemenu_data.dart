@@ -1,4 +1,4 @@
-import 'package:dashboard_table_master/models/menu_model.dart';
+import 'package:dashboard_table_master/dashboard_sidemenu/sidemenu_model.dart';
 
 class SideMenuData {
   final menu = <MenuModel>[

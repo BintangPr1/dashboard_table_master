@@ -1,18 +1,17 @@
-import 'package:dashboard_table_master/data/side_menu_data.dart';
+import 'package:dashboard_table_master/dashboard_sidemenu/sidemenu_data.dart';
+import 'package:dashboard_table_master/dashboard_sidemenu/sidemenu_logic.dart';
 import 'package:flutter/material.dart';
+import 'package:fstudio/fstudio.dart';
 
-class SideMenuWidget extends StatefulWidget {
-  const SideMenuWidget({super.key});
-
-  @override
-  State<SideMenuWidget> createState() => _SideMenuWidgetState();
-}
-
-class _SideMenuWidgetState extends State<SideMenuWidget> {
+class SidemenuWidget extends FPage<SidemenuLogic> {
   int selectedIndex = 0;
+  @override
+  void initialize() {
+    setLogic(SidemenuLogic());
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLayout(BuildContext context) {
     final data = SideMenuData();
 
     return LayoutBuilder(
@@ -55,9 +54,9 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: InkWell(
-        onTap: () => setState(() {
-          selectedIndex = index;
-        }),
+        // onTap: () => setState(() {
+        //   selectedIndex = index;
+        // }),
         child: Container(
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(

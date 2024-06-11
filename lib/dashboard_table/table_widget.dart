@@ -1,19 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:postgres/postgres.dart';
+import 'package:dashboard_table_master/dashboard_table/table_logic.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:fstudio/fstudio.dart';
 
-class DashboardWidgetTable extends StatefulWidget {
-  const DashboardWidgetTable({super.key});
+// class DashboardWidgetTable extends StatefulWidget {
+//   const DashboardWidgetTable({super.key});
 
-  @override
-  State<DashboardWidgetTable> createState() => _DashboardWidgetTableState();
-}
+//   @override
+//   State<DashboardWidgetTable> createState() => _DashboardWidgetTableState();
+// }
 
-class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
+// class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
+//   late List<List<dynamic>> result = [];
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     fetchData();
+//   }
+
+//   Future<void> fetchData() async {
+//     final conn = await Connection.open(
+//       Endpoint(
+//           host: 'localhost',
+//           port: 5432,
+//           database: 'treasury2',
+//           username: 'postgres',
+//           password: 'September123'),
+//       settings: const ConnectionSettings(sslMode: SslMode.disable),
+//     );
+
+//     final temp = await conn.execute('SELECT * FROM master_staking_period');
+
+//     setState(() {
+//       result = temp;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ListView(
+//         padding: const EdgeInsets.all(16),
+//         children: [
+//           PaginatedDataTable(
+//             rowsPerPage: 5,
+//             columns: const [
+//               DataColumn(label: Text('uid')),
+//               DataColumn(label: Text('Country Code')),
+//               DataColumn(label: Text('Period')),
+//               DataColumn(label: Text('Min Weight')),
+//               DataColumn(label: Text('Max Weight')),
+//               DataColumn(label: Text('Penalty Percentage')),
+//               DataColumn(label: Text('Reward Percentage')),
+//             ],
+//             source: _DataSource(context, result),
+//           ),
+//           ElevatedButton(
+//               onPressed: () {
+//                 print(result[0][2]);
+//               },
+//               child: const Text('asdasd'))
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class TableWidget extends FPage<TableLogic> {
   late List<List<dynamic>> result = [];
-
   @override
-  void initState() {
-    super.initState();
+  void initialize() {
+    setLogic(TableLogic());
     fetchData();
   }
 
@@ -30,13 +89,11 @@ class _DashboardWidgetTableState extends State<DashboardWidgetTable> {
 
     final temp = await conn.execute('SELECT * FROM master_staking_period');
 
-    setState(() {
-      result = temp;
-    });
+    result = temp;
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildLayout(BuildContext context) {
     return Scaffold(
       body: ListView(
         padding: const EdgeInsets.all(16),

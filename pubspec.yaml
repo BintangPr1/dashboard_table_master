@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  fstudio: ^1.0.5
   postgres: ^3.2.1
 
 dev_dependencies:

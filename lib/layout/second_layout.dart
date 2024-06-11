@@ -1,6 +1,6 @@
-import 'package:dashboard_table_master/dashboard_crud_button/dashboard_widget_button.dart';
-import 'package:dashboard_table_master/widgets/dashboard_widget_search.dart';
-import 'package:dashboard_table_master/widgets/dashboard_widget_table.dart';
+import 'package:dashboard_table_master/dashboard_crud/button_widget.dart';
+import 'package:dashboard_table_master/dashboard_search/search_widget.dart';
+import 'package:dashboard_table_master/dashboard_table/table_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardWidget extends StatelessWidget {
@@ -12,23 +12,23 @@ class DashboardWidget extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 50),
       child: Column(
         children: [
-          const Expanded(
+          Expanded(
             flex: 2,
-            child: DashboardWidgetButton(),
+            child: ButtonWidget().getWidget(),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Expanded(
+          Expanded(
             flex: 3,
-            child: DashboardWidgetSearch(),
+            child: SearchWidget().getWidget(),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Expanded(
+          Expanded(
             flex: 10,
-            child: DashboardWidgetTable(),
+            child: TableWidget().getWidget(),
           ),
         ],
       ),
