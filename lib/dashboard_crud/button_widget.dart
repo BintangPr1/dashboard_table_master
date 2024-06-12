@@ -2,6 +2,17 @@ import 'package:dashboard_table_master/dashboard_crud/button_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:fstudio/fstudio.dart';
 import 'package:dashboard_table_master/utils/textfield_widget.dart';
+import 'package:fstudio/widget/simple_button.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+final supabase = Supabase.instance.client;
+
+final TextEditingController countryCode = TextEditingController();
+final TextEditingController period = TextEditingController();
+final TextEditingController minWeight = TextEditingController();
+final TextEditingController maxWeight = TextEditingController();
+final TextEditingController penaltyPercentage = TextEditingController();
+final TextEditingController rewardPercentage = TextEditingController();
 
 class ButtonWidget extends FPage<ButtonLogic> {
   @override
@@ -37,14 +48,32 @@ class ButtonWidget extends FPage<ButtonLogic> {
                           builder: (BuildContext context) {
                             return AlertDialog(
                               backgroundColor: Colors.white,
-                              title: Text("Add"),
+                              title: const Text("Add"),
                               actions: [
-                                TextField1(label: 'Country Code'),
-                                TextField1(label: 'Period'),
-                                TextField1(label: 'Min Weight'),
-                                TextField1(label: 'Max Weight'),
-                                TextField1(label: 'Penalty Percentage'),
-                                TextField1(label: 'Reward Percentage'),
+                                TextField1(
+                                  label: 'Country Code',
+                                  controller: countryCode,
+                                ),
+                                TextField1(
+                                  label: 'Period',
+                                  controller: period,
+                                ),
+                                TextField1(
+                                  label: 'Min Weight',
+                                  controller: minWeight,
+                                ),
+                                TextField1(
+                                  label: 'Max Weight',
+                                  controller: maxWeight,
+                                ),
+                                TextField1(
+                                  label: 'Penalty Percentage',
+                                  controller: penaltyPercentage,
+                                ),
+                                TextField1(
+                                  label: 'Reward Percentage',
+                                  controller: rewardPercentage,
+                                ),
                                 Row(
                                   children: [
                                     Container(
@@ -54,7 +83,9 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                       ),
                                       width: 100,
                                       child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
                                         style: ButtonStyle(
                                           backgroundColor:
                                               WidgetStateProperty.all<Color>(
@@ -79,7 +110,11 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                       ),
                                       width: 100,
                                       child: TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          logic.insertRow();
+
+                                          Navigator.pop(context);
+                                        },
                                         style: ButtonStyle(
                                           backgroundColor:
                                               WidgetStateProperty.all<Color>(
@@ -154,7 +189,26 @@ class ButtonWidget extends FPage<ButtonLogic> {
                   ),
                   width: 100,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("delete this row"),
+                              actions: [
+                                FSimpleButton(
+                                  padding: EdgeInsets.all(5),
+                                  backgroundColor: Colors.red,
+                                  child: Text("DELETE"),
+                                  onTap: () {
+                                    logic.deleteRow();
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ],
+                            );
+                          });
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           WidgetStateProperty.all<Color>(Colors.red.shade100),
