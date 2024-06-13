@@ -2,8 +2,6 @@ import 'package:dashboard_table_master/layout/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-// final supabase = Supabase.instance.client;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -28,35 +26,6 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
       home: const MainScreen(),
-    );
-  }
-}
-
-class TestDb extends StatefulWidget {
-  const TestDb({super.key});
-
-  @override
-  State<TestDb> createState() => _TestDbState();
-}
-
-class _TestDbState extends State<TestDb> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            FloatingActionButton(onPressed: () async {
-              final data =
-                  await supabase.from('master_staking_period').select('*');
-              print(data);
-              print(data.length);
-              print(data.runtimeType);
-            }),
-            FloatingActionButton(onPressed: () {}),
-          ],
-        ),
-      ),
     );
   }
 }

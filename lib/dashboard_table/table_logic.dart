@@ -6,7 +6,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final supabase = Supabase.instance.client;
 
 class TableLogic extends FPageLogic<TableWidget> {
-  // Make the class a singleton
   static final TableLogic _instance = TableLogic._internal();
 
   factory TableLogic() {
@@ -90,8 +89,7 @@ class _DataSource extends DataTableSource {
           _selectedCount = value ? 1 : 0;
           row.selected = value;
           notifyListeners();
-          onRowSelect(
-              value ? row : null); // Call the callback with the selected row
+          onRowSelect(value ? row : null);
         }
       },
       cells: [

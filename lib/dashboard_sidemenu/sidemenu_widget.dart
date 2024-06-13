@@ -16,8 +16,7 @@ class SidemenuWidget extends FPage<SidemenuLogic> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        double menuWidth =
-            constraints.maxWidth * 0.8; // Adjust width percentage as needed
+        double menuWidth = constraints.maxWidth * 0.8;
 
         return Container(
           width: menuWidth,
@@ -73,7 +72,3 @@ class SidemenuWidget extends FPage<SidemenuLogic> {
     });
   }
 }
-
-// onTap: () => setState(() {
-        //   selectedIndex = index;
-        // }),

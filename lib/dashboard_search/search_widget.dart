@@ -27,76 +27,70 @@ class SearchWidget extends FPage<SearchLogic> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 100, // Fixed width for the label
+                    width: 100,
                     child: Text("uid" + ":", style: TextStyle(fontSize: 14)),
                   ),
                   SizedBox(
-                    width: 300, // Fixed width for the TextField
+                    width: 300,
                     child: TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        isDense: true, // Reduces height of TextField
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 8), // Adds padding inside the TextField
+                        isDense: true,
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 1), // Reduced spacing between fields
+              const SizedBox(height: 1),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    width: 100, // Fixed width for the label
+                    width: 100,
                     child: Text("Country Code" + ":",
                         style: TextStyle(fontSize: 14)),
                   ),
                   SizedBox(
-                    width: 300, // Fixed width for the TextField
-                    height: 30, // Set height to match the TextField
+                    width: 300,
+                    height: 30,
                     child: DropdownButtonFormField<String>(
                       itemHeight: 48,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        isDense: true, // Reduces height of the TextField
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 8), // Adds padding inside the TextField
+                        isDense: true,
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                       ),
                       items: const [
                         DropdownMenuItem(
                           value: '+65',
                           child: Text('+65'),
                         ),
-                        // Add more items as needed
                       ],
-                      onChanged: (value) {
-                        // Handle change
-                      },
+                      onChanged: (value) {},
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 1), // Reduced spacing between fields
+              const SizedBox(height: 1),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    width: 100, // Fixed width for the label
+                    width: 100,
                     child: Text("Period" + ":", style: TextStyle(fontSize: 14)),
                   ),
                   SizedBox(
-                    width: 300, // Fixed width for the TextField
+                    width: 300,
                     child: DropdownButtonFormField<String>(
                       itemHeight: 48,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        isDense: true, // Reduces height of the TextField
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 8), // Adds padding inside the TextField
+                        isDense: true,
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                       ),
                       items: const [
                         DropdownMenuItem(
@@ -115,7 +109,6 @@ class SearchWidget extends FPage<SearchLogic> {
                           value: '180d',
                           child: Text('180d'),
                         ),
-                        // Add more items as needed
                       ],
                       onChanged: (value) {
                         // Handle change

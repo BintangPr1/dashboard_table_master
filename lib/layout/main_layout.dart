@@ -17,10 +17,10 @@ class MainScreen extends StatelessWidget {
               child: SidemenuWidget().getWidget(),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
-          Expanded(
+          const Expanded(
             flex: 8,
             child: DashboardWidget(),
           ),
