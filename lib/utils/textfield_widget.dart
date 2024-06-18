@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TextField1 extends StatefulWidget {
+class TextFieldWithLabel extends StatefulWidget {
   final String label;
   final TextEditingController controller;
-  const TextField1({super.key, required this.label, required this.controller});
+  const TextFieldWithLabel(
+      {super.key, required this.label, required this.controller});
 
   @override
-  State<TextField1> createState() => _TextField1State();
+  State<TextFieldWithLabel> createState() => _TextField1State();
 }
 
-class _TextField1State extends State<TextField1> {
+class _TextField1State extends State<TextFieldWithLabel> {
   final TextEditingController textController = TextEditingController();
   @override
   Widget build(BuildContext context) {

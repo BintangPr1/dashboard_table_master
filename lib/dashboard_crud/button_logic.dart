@@ -1,6 +1,5 @@
 import 'package:dashboard_table_master/dashboard_crud/button_widget.dart';
 import 'package:dashboard_table_master/dashboard_table/table_logic.dart';
-
 import 'package:fstudio/fstudio.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

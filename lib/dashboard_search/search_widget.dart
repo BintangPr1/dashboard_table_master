@@ -1,6 +1,7 @@
 import 'package:dashboard_table_master/dashboard_search/search_logic.dart';
 import 'package:fstudio/fstudio.dart';
 import 'package:flutter/material.dart';
+import 'package:fstudio/widget/simple_button.dart';
 
 class SearchWidget extends FPage<SearchLogic> {
   @override
@@ -127,20 +128,17 @@ class SearchWidget extends FPage<SearchLogic> {
                 borderRadius: BorderRadius.circular(8),
               ),
               width: 100,
-              child: TextButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor:
-                      WidgetStateProperty.all<Color>(Colors.blue.shade100),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+              child: FSimpleButton(
+                onTap: () {},
+                backgroundColor: Colors.blue.shade100,
+                height: 30,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                child: const Center(
+                  child: Text(
+                    'Search',
+                    style: TextStyle(color: Colors.black),
                   ),
-                ),
-                child: const Text(
-                  'Search',
-                  style: TextStyle(color: Colors.black),
                 ),
               ),
             ),

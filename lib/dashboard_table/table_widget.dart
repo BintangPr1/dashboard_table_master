@@ -29,6 +29,7 @@ class TableWidget extends FPage<TableLogic> {
                     child: ListView(
                       children: [
                         PaginatedDataTable(
+                          showCheckboxColumn: true,
                           rowsPerPage: 7,
                           columns: const [
                             DataColumn(label: Text('uid')),

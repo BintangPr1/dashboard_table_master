@@ -51,8 +51,8 @@ class ButtonWidget extends FPage<ButtonLogic> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   width: 100,
-                  child: TextButton(
-                    onPressed: () {
+                  child: FSimpleButton(
+                    onTap: () {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -60,27 +60,27 @@ class ButtonWidget extends FPage<ButtonLogic> {
                               backgroundColor: Colors.white,
                               title: const Text("Add"),
                               actions: [
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Country Code',
                                   controller: countryCode,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Period',
                                   controller: period,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Min Weight',
                                   controller: minWeight,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Max Weight',
                                   controller: maxWeight,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Penalty Percentage',
                                   controller: penaltyPercentage,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Reward Percentage',
                                   controller: rewardPercentage,
                                 ),
@@ -92,24 +92,19 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       width: 100,
-                                      child: TextButton(
-                                        onPressed: () {
+                                      child: FSimpleButton(
+                                        onTap: () {
                                           Navigator.of(context).pop();
                                         },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  Colors.blue.shade100),
-                                          shape: WidgetStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
+                                        backgroundColor: Colors.blue.shade100,
+                                        height: 30,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)), // ),
+                                        child: const Center(
+                                          child: Text(
+                                            'Cancel',
                                           ),
-                                        ),
-                                        child: const Text(
-                                          'Cancel',
                                         ),
                                       ),
                                     ),
@@ -119,26 +114,21 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       width: 100,
-                                      child: TextButton(
-                                        onPressed: () {
+                                      child: FSimpleButton(
+                                        onTap: () {
                                           logic.insertRow();
 
                                           Navigator.pop(context);
                                         },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  Colors.blue.shade100),
-                                          shape: WidgetStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
+                                        backgroundColor: Colors.blue.shade100,
+                                        height: 30,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: const Center(
+                                          child: Text(
+                                            'Add',
                                           ),
-                                        ),
-                                        child: const Text(
-                                          'Add',
                                         ),
                                       ),
                                     ),
@@ -148,18 +138,15 @@ class ButtonWidget extends FPage<ButtonLogic> {
                             );
                           });
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all<Color>(Colors.green.shade100),
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                    backgroundColor: Colors.green.shade100,
+                    height: 30,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    child: const Center(
+                      child: Text(
+                        '+ Add',
+                        style: TextStyle(color: Colors.black),
                       ),
-                    ),
-                    child: const Text(
-                      '+ Add',
-                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -172,8 +159,8 @@ class ButtonWidget extends FPage<ButtonLogic> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   width: 100,
-                  child: TextButton(
-                    onPressed: () {
+                  child: FSimpleButton(
+                    onTap: () {
                       logic.updateControllers();
                       showDialog(
                           context: context,
@@ -182,27 +169,27 @@ class ButtonWidget extends FPage<ButtonLogic> {
                               backgroundColor: Colors.white,
                               title: const Text("Update"),
                               actions: [
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Country Code',
                                   controller: countryCodeUpdate,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Period',
                                   controller: periodUpdate,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Min Weight',
                                   controller: minWeightUpdate,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Max Weight',
                                   controller: maxWeightUpdate,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Penalty Percentage',
                                   controller: penaltyPercentageUpdate,
                                 ),
-                                TextField1(
+                                TextFieldWithLabel(
                                   label: 'Reward Percentage',
                                   controller: rewardPercentageUpdate,
                                 ),
@@ -214,24 +201,19 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       width: 100,
-                                      child: TextButton(
-                                        onPressed: () {
+                                      child: FSimpleButton(
+                                        onTap: () {
                                           Navigator.of(context).pop();
                                         },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  Colors.blue.shade100),
-                                          shape: WidgetStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
+                                        backgroundColor: Colors.blue.shade100,
+                                        height: 30,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: const Center(
+                                          child: Text(
+                                            'Cancel',
                                           ),
-                                        ),
-                                        child: const Text(
-                                          'Cancel',
                                         ),
                                       ),
                                     ),
@@ -241,26 +223,21 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                         borderRadius: BorderRadius.circular(8),
                                       ),
                                       width: 100,
-                                      child: TextButton(
-                                        onPressed: () {
+                                      child: FSimpleButton(
+                                        onTap: () {
                                           // logic.insertRow();
                                           logic.updateRow();
                                           Navigator.pop(context);
                                         },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  Colors.blue.shade100),
-                                          shape: WidgetStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
+                                        backgroundColor: Colors.blue.shade100,
+                                        height: 30,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: const Center(
+                                          child: Text(
+                                            'Update',
                                           ),
-                                        ),
-                                        child: const Text(
-                                          'Update',
                                         ),
                                       ),
                                     ),
@@ -270,18 +247,16 @@ class ButtonWidget extends FPage<ButtonLogic> {
                             );
                           });
                     },
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
-                          Colors.yellow.shade100),
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                    backgroundColor: Colors.yellow.shade100,
+                    height: 30,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    //
+                    child: const Center(
+                      child: Text(
+                        'Update',
+                        style: TextStyle(color: Colors.black),
                       ),
-                    ),
-                    child: const Text(
-                      'Update',
-                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -294,18 +269,18 @@ class ButtonWidget extends FPage<ButtonLogic> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   width: 100,
-                  child: TextButton(
-                    onPressed: () {
+                  child: FSimpleButton(
+                    onTap: () {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("delete this row"),
+                              title: const Text("delete this row"),
                               actions: [
                                 FSimpleButton(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   backgroundColor: Colors.red,
-                                  child: Text("DELETE"),
+                                  child: const Text("DELETE"),
                                   onTap: () {
                                     logic.deleteRow();
                                     Navigator.pop(context);
@@ -315,18 +290,15 @@ class ButtonWidget extends FPage<ButtonLogic> {
                             );
                           });
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all<Color>(Colors.red.shade100),
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                    backgroundColor: Colors.red.shade100,
+                    height: 30,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    child: const Center(
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(color: Colors.black),
                       ),
-                    ),
-                    child: const Text(
-                      'Delete',
-                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -339,13 +311,13 @@ class ButtonWidget extends FPage<ButtonLogic> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   width: 100,
-                  child: TextButton(
-                    onPressed: () {
+                  child: FSimpleButton(
+                    onTap: () {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("View"),
+                              title: const Text("View"),
                               content: Column(
                                 children: [
                                   Text(
@@ -367,18 +339,15 @@ class ButtonWidget extends FPage<ButtonLogic> {
                             );
                           });
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all<Color>(Colors.white),
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                    backgroundColor: Colors.white,
+                    height: 30,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    child: const Center(
+                      child: Text(
+                        'View',
+                        style: TextStyle(color: Colors.black),
                       ),
-                    ),
-                    child: const Text(
-                      'View',
-                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
