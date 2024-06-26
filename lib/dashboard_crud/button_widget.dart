@@ -225,7 +225,6 @@ class ButtonWidget extends FPage<ButtonLogic> {
                                       width: 100,
                                       child: FSimpleButton(
                                         onTap: () {
-                                          // logic.insertRow();
                                           logic.updateRow();
                                           Navigator.pop(context);
                                         },
